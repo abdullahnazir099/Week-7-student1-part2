@@ -145,7 +145,6 @@
               <td>
               <button class="btn btn-sm btn-info" onclick="openEditModal(${book.id})">Edit</button>
               <button class="btn btn-sm btn-danger" onclick="confirmDelete(${book.id})">Delete</button>
-
               
             </td>
           </tr>
@@ -240,4 +239,4 @@
   }
   
   // Run the showBooks function on page load
-  document.addEventListener('DOMContentLoaded', showBooks);
+  document.addEventListener('DOMContentLoaded', showBooks());
