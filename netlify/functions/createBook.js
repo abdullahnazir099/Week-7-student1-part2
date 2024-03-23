@@ -3,6 +3,8 @@ const mysql = require('mysql2/promise');
 exports.handler = async (event, context) => {
   try {
     const { title, author, isbn, published_year, genre } = JSON.parse(event.body);
+ 
+
 
     const connection = await mysql.createConnection({
       host: process.env.DB_HOST,

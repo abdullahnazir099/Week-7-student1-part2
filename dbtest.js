@@ -127,34 +127,64 @@
 
 
 
+  // function showBooks() {
+  //   fetch('/.netlify/functions/allBooks')
+  //     .then(response => response.json())
+  //     .then(books => {
+  //       const booksList = document.getElementById('books-list');
+  //       booksList.innerHTML = '';
+  //       books.forEach(book => {
+  //         const row = `
+  //           <tr>
+  //             <td>${book.id}</td>
+  //             <td>${book.title}</td>
+  //             <td>${book.author}</td>
+  //             <td>${book.isbn}</td>
+  //             <td>${book.published_year}</td>
+  //             <td>${book.genre}</td>
+  //             <td>
+  //             <button class="btn btn-sm btn-info" onclick="openEditModal(${book.id})">Edit</button>
+  //             <button class="btn btn-sm btn-danger" onclick="confirmDelete(${book.id})">Delete</button>
+              
+  //           </td>
+  //         </tr>
+  //       `;
+  //       booksList.innerHTML += row;
+  //     });
+  //   })
+  //   .catch(error => console.error('Error:', error));
+  // }
+  
+
+
   function showBooks() {
     fetch('/.netlify/functions/allBooks')
       .then(response => response.json())
       .then(books => {
         const booksList = document.getElementById('books-list');
         booksList.innerHTML = '';
-        books.forEach(book => {
-          const row = `
-            <tr>
-              <td>${book.id}</td>
-              <td>${book.title}</td>
-              <td>${book.author}</td>
-              <td>${book.isbn}</td>
-              <td>${book.published_year}</td>
-              <td>${book.genre}</td>
-              <td>
+        const bookslist= books.map(book => 
+           `
+            <li>
+              ${book.id}
+              ${book.title}
+              ${book.author}
+              ${book.isbn}
+              ${book.published_year}
+              ${book.genre}
+              
               <button class="btn btn-sm btn-info" onclick="openEditModal(${book.id})">Edit</button>
               <button class="btn btn-sm btn-danger" onclick="confirmDelete(${book.id})">Delete</button>
               
-            </td>
-          </tr>
-        `;
-        booksList.innerHTML += row;
-      });
+            
+          </li>
+        `
+       
+      ).join('');
+      booksList.innerHTML= `<ul>${bookslist}</ul>`;
     })
     .catch(error => console.error('Error:', error));
   }
-  
   // Function to add a new book
   function addBook() {
     const title = document.getElementById('title').value;
