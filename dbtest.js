@@ -170,8 +170,9 @@ function showBooks() {
           <td>${book.published_year}</td>
           <td>${book.genre}</td>
           <td>
-            <button onclick="editBook(${book.id})">Edit</button>
-            <button onclick="deleteBook(${book.id})">Delete</button>
+         
+            <button class="btn btn-sm btn-info" onclick="openEditModal(${book.id})">Edit</button>
+                 <button class="btn btn-sm btn-danger" onclick="confirmDelete(${book.id})">Delete</button>
           </td>
         </tr>
       `).join('');
