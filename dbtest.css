@@ -1,0 +1,31 @@
+.nav
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #bbcbe8;
+    border-radius: 30px;
+    background-color: #bbcbe8;
+}
+.nav img
+{
+    width: 60px;
+    opacity: 0.8;
+}
+.nav-link-logo:nth-child(1)
+{
+    margin-right: 2rem;
+}
+.nav-link-logo:nth-child(2)
+{
+    margin-right: 2rem;
+}
+.container {
+    background-color: #5782b0;
+    width: 70%;
+}
+
+body {
+    background-color: rgb(116, 56, 56);
+    text-align: center;
+} 

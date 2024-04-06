@@ -5,17 +5,7 @@ function showBooks() {
     .then(books => {
       const booksContainer = document.getElementById('books-container');
       const bookList = books.map(book => `
-        <thead>
-                    <tr>
-                     
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>ISBN</th>
-                        <th>Published Year</th>
-                        <th>Genre</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
+       
         <tr>
           <td>${book.title}</td>
           <td>${book.author}</td>
@@ -34,10 +24,10 @@ function showBooks() {
     .catch(error => console.error('Error fetching books:', error));
 }
 
-// Call showBooks() on page load
+
 document.addEventListener('DOMContentLoaded', showBooks);
 
-  // Function to add a new book
+
   function addBook() {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
@@ -55,14 +45,14 @@ document.addEventListener('DOMContentLoaded', showBooks);
     .then(response => {
       if (response.ok) {
         $('#addBookModal').modal('hide');
-        showBooks(); // Update the book list
+        showBooks();
       }
     })
     .catch(error => console.error('Error:', error));
   }
   
   document.addEventListener('DOMContentLoaded', showBooks);
-  // Function to open the edit modal with book details
+  
   async function openEditModal(bookId) {
     try {
       const response = await fetch(`/.netlify/functions/readBook?id=${bookId}`);
@@ -81,7 +71,7 @@ document.addEventListener('DOMContentLoaded', showBooks);
     }
   }
   
-  // Function to update an existing book
+
   function updateBook() {
     const id = document.getElementById('editBookId').value;
     const title = document.getElementById('editTitle').value;
@@ -100,13 +90,13 @@ document.addEventListener('DOMContentLoaded', showBooks);
     .then(response => {
       if (response.ok) {
         $('#editBookModal').modal('hide');
-        showBooks(); // Update the book list
+        showBooks(); 
       }
     })
     .catch(error => console.error('Error:', error));
   }
   
-  // Function to confirm and delete a book
+
   function confirmDelete(bookId) {
     if (confirm('Are you sure you want to delete this book?')) {
       fetch(`/.netlify/functions/deleteBook?id=${bookId}`, {
@@ -114,12 +104,12 @@ document.addEventListener('DOMContentLoaded', showBooks);
       })
       .then(response => {
         if (response.ok) {
-          showBooks(); // Update the book list
+          showBooks(); 
         }
       })
       .catch(error => console.error('Error:', error));
     }
   }
   
-  // Run the showBooks function on page load
+ 
   document.addEventListener('DOMContentLoaded', showBooks());
